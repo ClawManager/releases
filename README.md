@@ -34,6 +34,20 @@ $env:VERSION="v0.1.26"; iwr -useb https://raw.githubusercontent.com/ClawManager/
 
 ---
 
+## macOS One-Click Installer
+
+For macOS users who prefer not to use the terminal:
+
+1. **Download** [`Install ClawManager.command`](https://raw.githubusercontent.com/ClawManager/releases/main/Install%20ClawManager.command) and save it anywhere (e.g. your Desktop).
+2. **Double-click** the file in Finder — Terminal will open and the installer will run automatically.
+3. When installation completes, press **Enter** to close the window.
+
+> **⚠️ Gatekeeper notice:** Because `Install ClawManager.command` is unsigned, macOS may initially block it with an "unidentified developer" warning.  
+> To bypass: **right-click** (or Control-click) the file → **Open** → confirm when asked.  
+> This applies to the `.command` file itself; the ClawManager app has the same requirement — see the Troubleshooting section below.
+
+---
+
 ## What the installer does
 
 ### macOS
