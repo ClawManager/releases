@@ -75,10 +75,10 @@ See the [Releases page](https://github.com/ClawManager/releases/releases) to dow
 | Platform | File | Notes |
 |---|---|---|
 | macOS (Apple Silicon) | `ClawManager-arm64.dmg` | M1 / M2 / M3 |
-| macOS (Intel) | `ClawManager.dmg` | x86\_64; also runs on Apple Silicon via Rosetta |
+| macOS (Intel) | `ClawManager-x64.dmg` | x86\_64; also runs on Apple Silicon via Rosetta |
 | Linux ARM64 | `ClawManager-arm64.deb` | Debian / Ubuntu / derivatives |
-| Linux x86\_64 | `ClawManager.AppImage` | Universal; runs on most modern distros |
-| Windows | `ClawManager-Setup.exe` | x64 installer |
+| Linux x86\_64 | `ClawManager-amd64.deb` | Debian / Ubuntu / derivatives |
+| Windows x64 | `ClawManager Setup {version}.exe` | e.g. `ClawManager Setup 0.2.4.exe` |
 
 ---
 
