@@ -62,7 +62,7 @@ install_macos() {
 
   case "$arch" in
     arm64)           ASSET="ClawManager-arm64.dmg" ;;
-    x86_64 | i386)  ASSET="ClawManager.dmg" ;;
+    x86_64 | i386)  ASSET="ClawManager-x64.dmg" ;;
     *)               die "Unsupported macOS architecture: $arch" ;;
   esac
 
@@ -149,29 +149,27 @@ install_linux() {
       ;;
 
     x86_64 | amd64)
-      # AppImage for amd64
-      local asset="ClawManager.AppImage"
+      # .deb package for x64
+      local asset="ClawManager-x64.deb"
       local url="${RELEASES_URL}/${version}/${asset}"
-      local install_dir="${HOME}/.local/bin"
-      local dest="${install_dir}/ClawManager.AppImage"
-
-      mkdir -p "$install_dir"
+      local dest="${tmpdir}/${asset}"
       download "$url" "$dest"
-      chmod +x "$dest"
 
-      heading "✅  ClawManager ${version} installed!"
-      echo "   Installed to: ${dest}"
-      echo ""
-      # Ensure ~/.local/bin is in PATH
-      if ! echo "$PATH" | grep -q "$install_dir"; then
-        warn "~/.local/bin is not in your PATH."
-        warn "Add this to your shell profile (~/.bashrc, ~/.zshrc, etc.):"
-        warn "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+      info "Installing .deb package (requires sudo) …"
+      if command -v sudo &>/dev/null; then
+        sudo dpkg -i "$dest" || {
+          warn "dpkg reported errors — attempting: sudo apt-get install -f"
+          sudo apt-get install -f -y || die "Dependency fix failed. Run 'sudo apt-get install -f' manually."
+        }
+      else
+        dpkg -i "$dest" || {
+          warn "dpkg reported errors — attempting: apt-get install -f"
+          apt-get install -f -y || die "Dependency fix failed. Run 'apt-get install -f' manually."
+        }
       fi
-      echo "   Run: ClawManager.AppImage"
-      echo ""
-      echo "   Tip: to integrate with your desktop, run:"
-      echo "     ClawManager.AppImage --appimage-integrate"
+      rm -f "$dest"
+      heading "✅  ClawManager ${version} installed!"
+      echo "   Run: clawmanager  (or find it in your application launcher)"
       ;;
 
     *)
