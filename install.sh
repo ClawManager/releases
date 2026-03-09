@@ -57,12 +57,13 @@ download() {
 # ── macOS installer ──────────────────────────────────────────────────────────
 install_macos() {
   local version="$1"
+  local version_num="$2"
   local arch
   arch="$(uname -m)"
 
   case "$arch" in
-    arm64)           ASSET="ClawManager-arm64.dmg" ;;
-    x86_64 | i386)  ASSET="ClawManager-x64.dmg" ;;
+    arm64)           ASSET="ClawManager-${version_num}-arm64.dmg" ;;
+    x86_64 | i386)  ASSET="ClawManager-${version_num}-x64.dmg" ;;
     *)               die "Unsupported macOS architecture: $arch" ;;
   esac
 
@@ -117,6 +118,7 @@ install_macos() {
 # ── Linux installer ──────────────────────────────────────────────────────────
 install_linux() {
   local version="$1"
+  local version_num="$2"
   local arch
   arch="$(uname -m)"
 
@@ -126,7 +128,7 @@ install_linux() {
   case "$arch" in
     aarch64 | arm64)
       # .deb package for ARM64
-      local asset="ClawManager-arm64.deb"
+      local asset="ClawManager-${version_num}-arm64.deb"
       local url="${RELEASES_URL}/${version}/${asset}"
       local dest="${tmpdir}/${asset}"
       download "$url" "$dest"
@@ -150,7 +152,7 @@ install_linux() {
 
     x86_64 | amd64)
       # .deb package for x64
-      local asset="ClawManager-x64.deb"
+      local asset="ClawManager-${version_num}-amd64.deb"
       local url="${RELEASES_URL}/${version}/${asset}"
       local dest="${tmpdir}/${asset}"
       download "$url" "$dest"
@@ -192,10 +194,12 @@ main() {
   version="$(resolve_version)"
   [ -n "$version" ] || die "Could not determine release version. Set VERSION=vX.Y.Z to override."
   info "Version: ${version}"
+  # Strip leading 'v' for use in filenames (e.g. v0.2.0 → 0.2.0)
+  local version_num="${version#v}"
 
   case "$os" in
-    Darwin)  install_macos "$version" ;;
-    Linux)   install_linux "$version" ;;
+    Darwin)  install_macos "$version" "$version_num" ;;
+    Linux)   install_linux "$version" "$version_num" ;;
     *)       die "Unsupported OS: ${os}. This script supports macOS and Linux." ;;
   esac
 }
