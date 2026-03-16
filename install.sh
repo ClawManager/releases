@@ -62,8 +62,8 @@ install_macos() {
   arch="$(uname -m)"
 
   case "$arch" in
-    arm64)           ASSET="ClawManager-arm64.dmg" ;;
-    x86_64 | i386)  ASSET="ClawManager-x64.dmg" ;;
+    arm64)           ASSET="ClawManager-${version_num}-arm64.dmg" ;;
+    x86_64 | i386)  ASSET="ClawManager-${version_num}-x64.dmg" ;;
     *)               die "Unsupported macOS architecture: $arch" ;;
   esac
 
@@ -128,7 +128,7 @@ install_linux() {
   case "$arch" in
     aarch64 | arm64)
       # .deb package for ARM64
-      local asset="ClawManager-arm64.deb"
+      local asset="ClawManager-${version_num}-arm64.deb"
       local url="${RELEASES_URL}/${version}/${asset}"
       local dest="${tmpdir}/${asset}"
       download "$url" "$dest"
@@ -152,7 +152,7 @@ install_linux() {
 
     x86_64 | amd64)
       # .deb package for x64
-      local asset="ClawManager-amd64.deb"
+      local asset="ClawManager-${version_num}-amd64.deb"
       local url="${RELEASES_URL}/${version}/${asset}"
       local dest="${tmpdir}/${asset}"
       download "$url" "$dest"
