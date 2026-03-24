@@ -197,6 +197,12 @@ main() {
   # Strip leading 'v' for use in filenames (e.g. v0.2.0 → 0.2.0)
   local version_num="${version#v}"
 
+  # Fire-and-forget install tracking ping (best-effort, never fails the install)
+  local platform="linux"
+  [ "$os" = "Darwin" ] && platform="mac-arm64"
+  curl -fsSL "https://clawmanager.ai/api/download?platform=${platform}&method=script" \
+    -o /dev/null -s --max-time 3 &>/dev/null & disown 2>/dev/null || true
+
   case "$os" in
     Darwin)  install_macos "$version" "$version_num" ;;
     Linux)   install_linux "$version" "$version_num" ;;
