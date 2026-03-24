@@ -200,8 +200,12 @@ main() {
   # Install tracking ping — synchronous, 2s max, silent, never fails the install
   local platform="linux"
   [ "$os" = "Darwin" ] && platform="mac-arm64"
-  curl -s -o /dev/null --max-time 2 \
-    "https://clawmanager.ai/api/download?platform=${platform}&method=script" || true
+  local _ping_url="https://clawmanager.ai/api/download?platform=${platform}&method=script"
+  if command -v curl &>/dev/null; then
+    curl -s -o /dev/null --max-time 2 "$_ping_url" || true
+  elif command -v wget &>/dev/null; then
+    wget -q -O /dev/null --timeout=2 "$_ping_url" 2>/dev/null || true
+  fi
 
   case "$os" in
     Darwin)  install_macos "$version" "$version_num" ;;
