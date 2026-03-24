@@ -197,14 +197,23 @@ main() {
   # Strip leading 'v' for use in filenames (e.g. v0.2.0 → 0.2.0)
   local version_num="${version#v}"
 
-  # Install tracking ping — synchronous, 2s max, silent, never fails the install
+  # Install tracking ping — synchronous, 5s max, silent, never fails the install
   local platform="linux"
   [ "$os" = "Darwin" ] && platform="mac-arm64"
   local _ping_url="https://clawmanager.ai/api/download?platform=${platform}&method=script"
+  local _dl_response=""
   if command -v curl &>/dev/null; then
-    curl -s -o /dev/null --max-time 2 "$_ping_url" || true
+    _dl_response=$(curl -s --max-time 5 "$_ping_url" 2>/dev/null) || true
   elif command -v wget &>/dev/null; then
-    wget -q -O /dev/null --timeout=2 "$_ping_url" 2>/dev/null || true
+    _dl_response=$(wget -q -O- --timeout=5 "$_ping_url" 2>/dev/null) || true
+  fi
+  # Extract dlToken from JSON response and write to disk for the app to read on first launch
+  if [ -n "$_dl_response" ]; then
+    _dl_token=$(echo "$_dl_response" | grep -o '"dlToken":"[^"]*"' | cut -d'"' -f4)
+    if [ -n "$_dl_token" ]; then
+      mkdir -p "$HOME/.config/clawmanager"
+      printf '%s' "$_dl_token" > "$HOME/.config/clawmanager/.dltoken" 2>/dev/null || true
+    fi
   fi
 
   case "$os" in
