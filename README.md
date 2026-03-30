@@ -20,8 +20,8 @@ No more juggling tabs, losing context, or wondering what your agents are doing.
 ---
 
 > **📦 This is the releases repository** — Pre-built binaries for Windows, macOS, and Linux.  
-> ClawManager is closed-source proprietary software. **Free for personal and commercial use.**  
-> Source code available under restricted license. [View license terms →](https://clawmanager.ai/license)
+> ClawManager is **closed-source proprietary software**. Currently free to use.  
+> PRO features may be introduced in the future. [View license terms →](https://clawmanager.ai/license)
 
 ---
 
@@ -44,7 +44,7 @@ ClawManager gives you:
 - ✅ **Agent orchestration** — spawn sub-agents, delegate tasks, coordinate workflows
 - ✅ **Full transparency** — see exactly what agents are doing, when, and why
 - ✅ **Local-first privacy** — your data stays on your machine
-- ✅ **100% Free** — no subscriptions, no paywalls, no hidden costs
+- ✅ **Currently free** — all features included, PRO tier coming soon
 
 ---
 
@@ -237,12 +237,12 @@ Click **More info → Run anyway**. The binary is unsigned but safe.
 
 ## ❤️ Support ClawManager
 
-ClawManager is **free** and built independently. If it's saving you time or making AI agents usable for you, consider supporting development:
+ClawManager is **currently free** and built independently. If it's saving you time or making AI agents usable for you, consider supporting development:
 
 - **⭐ [Star this repo](https://github.com/ClawManager/releases)** — helps with visibility and discovery
 - **💜 [Donate](https://clawmanager.ai/donate)** — crypto donations accepted (BTC, ETH, SOL, TRX)
 - **📢 [Share on Twitter](https://twitter.com/intent/tweet?text=Just%20started%20using%20ClawManager%20for%20AI%20agent%20management%20%E2%80%94%20game%20changer!%20%F0%9F%A6%9E&url=https://clawmanager.ai)** — spread the word 🦞
-- **🎯 [Refer friends](https://clawmanager.ai/referrals)** — earn points toward PRO features
+- **🎯 [Refer friends](https://clawmanager.ai/referrals)** — earn points toward future PRO features
 
 ---
 
@@ -253,7 +253,7 @@ ClawManager is **local-first** and **closed-source** by design:
 - No telemetry or tracking (only anonymous analytics if opted-in)
 - Open API integration — bring your own keys
 - Full control over data and agent behavior
-- Closed-source proprietary software with restricted source access
+- Closed-source proprietary software — source code is private
 
 **[Read our privacy policy](https://clawmanager.ai/privacy)**
 
@@ -261,7 +261,7 @@ ClawManager is **local-first** and **closed-source** by design:
 
 ## 📜 License
 
-ClawManager is **free proprietary software**. Free for personal and commercial use. Source code available under restricted license.
+ClawManager is **closed-source proprietary software**. Currently free to use with all features included. PRO paid features may be added in future releases.
 
 **[View license terms](https://clawmanager.ai/license)**
 
