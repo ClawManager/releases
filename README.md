@@ -19,6 +19,12 @@ No more juggling tabs, losing context, or wondering what your agents are doing.
 
 ---
 
+> **📦 This is the releases repository** — Pre-built binaries for Windows, macOS, and Linux.  
+> ClawManager is closed-source proprietary software. **Free for personal and commercial use.**  
+> Source code available under restricted license. [View license terms →](https://clawmanager.ai/license)
+
+---
+
 ## What is ClawManager?
 
 ClawManager is a **free desktop application** that brings all your AI conversations into one unified workspace. Think of it as a **mission control center** for AI agents — whether you're using Claude, ChatGPT, Gemini, or any AI platform.
@@ -242,11 +248,12 @@ ClawManager is **free** and built independently. If it's saving you time or maki
 
 ## 🔐 Security & Privacy
 
-ClawManager is **local-first** by design:
+ClawManager is **local-first** and **closed-source** by design:
 - All conversations stored on your machine
 - No telemetry or tracking (only anonymous analytics if opted-in)
 - Open API integration — bring your own keys
 - Full control over data and agent behavior
+- Closed-source proprietary software with restricted source access
 
 **[Read our privacy policy](https://clawmanager.ai/privacy)**
 
